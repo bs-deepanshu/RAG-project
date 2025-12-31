@@ -4,8 +4,12 @@ import { askRAG } from "./rag.js";
 
 async function main() {
   // Ingest PDF
+  const chunks = await pdfToChunks("Amazon.pdf");
+//   console.log(chunks);
+  await ingestDocument("Amazon.pdf", chunks);
+
   // Ask question
-  const answer = await askRAG("Where does Amazon generally invest its excess cash in?", "Amazon.pdf");
+  const answer = await askRAG("What is RAG?", "Amazon.pdf");
   console.log(answer);
 }
 
